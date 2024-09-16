@@ -1,0 +1,40 @@
+.navigation-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Even spacing between buttons */
+    padding: 10px 0;
+    position: relative; /* Position relative for pseudo-elements */
+    margin-top: 32px;
+}
+
+.navigation-container::before,
+.navigation-container::after {
+    content: '';
+    position: absolute;
+    width: 50%; /* Border width */
+    height: 2px; /* Border thickness */
+    background-color: #D0C5C580; /* Border color */
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.navigation-container::before {
+    top: 0; /* Top border position */
+}
+
+.navigation-container::after {
+    bottom: 0; /* Bottom border position */
+}
+
+.nav-button {
+    background: none; /* Remove background */
+    border: none; /* Remove borders */
+    color: #84BD00; /* Set text color to green */
+    font-size: 18px; /* Font size */
+    cursor: pointer; /* Pointer cursor */
+}
+
+.nav-button:hover {
+    text-decoration: underline; /* Optional: Underline on hover */
+}

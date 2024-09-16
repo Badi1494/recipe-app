@@ -1,0 +1,20 @@
+.banner {
+    width: 100%;
+    margin-top: 37px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+  }
+  
+  .banner-text {
+    color: white;
+    font-family: Montserrat;
+    font-size: 60px;
+    font-weight: 400;
+    line-height: 73.14px;
+    margin-left: 20px;
+  }
+  
