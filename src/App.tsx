@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { getRecipies } from "./utils/fetchData";
 import MainLayout from "./components/Layout/mainLayout";
 import RecipeCard from "./components/Recipe/card";
 import { Recipe } from "./components/Recipe/type";
+import RecipeDetail from "./components/Detail/detail";
 import "./App.css"; // Import the CSS file for styling
 import { useSearch } from "./context/context"; // Adjust the path if necessary
 
@@ -48,27 +50,44 @@ function App() {
   };
 
   return (
-    <MainLayout>
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          gap: "60px",
-          marginTop: "90px",
-          paddingRight: "230px",
-          paddingLeft: "230px",
-        }}
-      >
-        {filteredData.slice(0, visibleCount).map((recipe) => (
-          <RecipeCard recipe={recipe} key={recipe.id} />
-        ))}
-      </div>
-      {visibleCount < filteredData.length && (
-        <button className="load-more-button" onClick={handleLoadMore}>
-          Load More
-        </button>
-      )}
-    </MainLayout>
+    <Router>
+      <MainLayout>
+        <Routes>
+          {/* Route for home page */}
+          <Route
+            path="/"
+            element={
+              <>
+                <div
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    gap: "60px",
+                    marginTop: "90px",
+                    paddingRight: "230px",
+                    paddingLeft: "230px",
+                  }}
+                >
+                  {filteredData.slice(0, visibleCount).map((recipe) => (
+                    <RecipeCard recipe={recipe} key={recipe.id} />
+                  ))}
+                </div>
+                {visibleCount < filteredData.length && (
+                  <button className="load-more-button" onClick={handleLoadMore}>
+                    Load More
+                  </button>
+                )}
+              </>
+            }
+          />
+          {/* Route for recipe detail page */}
+          <Route
+            path="/recipe/:id"
+            element={<RecipeDetail data={recipeData} />}
+          />
+        </Routes>
+      </MainLayout>
+    </Router>
   );
 }
 

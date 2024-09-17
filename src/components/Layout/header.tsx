@@ -7,51 +7,19 @@ import Navigation from "../Navigation/navigation";
 export default function Header() {
   return (
     <div>
-      <div
-        style={{
-          height: "37px",
-          backgroundColor: "black",
-          color: "white",
-          display: "flex",
-          justifyContent: "space-between",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            fontWeight: 700,
-            fontSize: "10px",
-            gap: "37px",
-            marginLeft: "72px",
-          }}
-        >
-          <p>Community</p>
+      <div className="top-search-bar">
+        <div className="nav-links">
+          <p>COMMUNITY</p>
           <p>Books</p>
-          <p>Recipe Index</p>
-          <p>Popular</p>
+          <p>RECIPE INDEX</p>
+          <p>POPULAR</p>
         </div>
-        <div style={{ display: "flex", gap: "21px", marginRight: "137px" }}>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              fontWeight: 700,
-              fontSize: "10px",
-              gap: "2px",
-            }}
-          >
+        <div className="nav-container">
+          <div className="inner-nav">
             <img src="/register.png" alt="register logo" />
             <p>REGISTER</p>
           </div>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              fontWeight: 700,
-              fontSize: "10px",
-              gap: "2px",
-            }}
-          >
+          <div className="login">
             <img src="/login.png" alt="login logo" />
             <p>LOGIN</p>
           </div>

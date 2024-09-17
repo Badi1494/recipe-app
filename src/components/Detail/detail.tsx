@@ -1,37 +1,37 @@
 import React from "react";
 import "./detail.css";
+import { Recipe } from "../Recipe/type";
+import { useParams } from "react-router-dom";
 
 interface RecipeDetailProps {
-  title: string;
-  description: string;
-  ingredients: string[];
-  imageSrc: string;
+  data: Recipe[];
 }
 
-const RecipeDetail: React.FC<RecipeDetailProps> = ({
-  title,
-  description,
-  ingredients,
-  imageSrc,
-}) => {
+const RecipeDetail: React.FC<RecipeDetailProps> = ({ data }) => {
+  const { id } = useParams<{ id: string }>();
+
+  const recipe = data.find((recipe) => recipe.id === Number(id));
+
+  if (!recipe) return <div>No recipe found for the given id</div>;
   return (
     <div className="recipe-detail-container">
       <div className="recipe-info">
-        <h1 className="recipe-title">{title}</h1>
-        <p className="recipe-description">{description}</p>
+        <h1 className="recipe-title">{recipe.name}</h1>
+        <p className="recipe-description">{recipe.tags.join(",")}</p>
 
         <h3>Ingredients</h3>
         <ul className="ingredient-list">
-          {ingredients.map((ingredient, index) => (
+          {recipe.ingredients.map((ingredient, index) => (
             <li key={index} className="ingredient-item">
-              <span className="ingredient-icon">●</span> {ingredient}
+              <img src="/dot.png" alt="dot" className="ingredient-icon" />{" "}
+              {ingredient}
             </li>
           ))}
         </ul>
       </div>
 
       <div className="recipe-image-container">
-        <img src={imageSrc} alt={title} className="recipe-image" />
+        <img src={recipe.image} alt={recipe.name} className="recipe-img" />
       </div>
     </div>
   );
