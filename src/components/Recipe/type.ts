@@ -1,12 +1,12 @@
 export interface Recipe {
   id: number;
   name: string;
-  instructions?: string;
+  instructions: string;
   ingredients: string[];
   tags: string[];
   rating: number;
-  prepTimeMinutes?: number;
-  cookTimeMinutes?: number;
+  prepTimeMinutes: number;
+  cookTimeMinutes: number;
   image: string;
   mealType: string;
   reviewCount: number;

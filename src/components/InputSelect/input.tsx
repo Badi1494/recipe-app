@@ -1,6 +1,6 @@
 import React from "react";
-import "./input.css"; // Import custom CSS
-import { useSearch } from "../../context/context"; // Adjust the path if necessary
+import "./input.css";
+import { useSearch } from "../../context/context";
 
 interface InputSelectProps {
   options: string[];
